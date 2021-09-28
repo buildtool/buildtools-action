@@ -1,15 +1,18 @@
 <p align="center">
-  <h3 align="center">Buildtool Action</h3>
-  <p align="center"><a href="https://github.com/features/actions">GitHub Action</a> for <a href="https://buildtools.io/">Buildtool Action</a></p>
+  <h3 align="center">Setup Buildtool Action</h3>
+  <p align="center"><a href="https://github.com/features/actions">GitHub Action</a> for <a href="https://buildtools.io/">Buildtool</a></p>
   <p align="center">
-    <a href="https://github.com/buildtool/build-action/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/release/buildtool/build-action.svg?logo=github"></a>
-    <a href="https://github.com/marketplace/actions/github-action-for-build"><img alt="GitHub marketplace" src="https://img.shields.io/badge/marketplace-build--action-blue?logo=github"></a>
+    <a href="https://github.com/buildtool/setup-buildtools-action/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/release/buildtool/buildtools-action.svg?logo=github"></a>
+    <a href="https://github.com/marketplace/actions/setup-buildtools"><img alt="GitHub marketplace" src="https://img.shields.io/badge/marketplace-buildtools--action-blue?logo=github"></a>
   </p>
 </p>
 
 ---
 
 > **:warning: Note:** To use this action, you must have access to the [GitHub Actions](https://github.com/features/actions) feature. GitHub Actions are currently only available in public beta. You can [apply for the GitHub Actions beta here](https://github.com/features/actions/signup/).
+
+# setup-buildtools-action
+This action downloads and installs [buildtools](https://buildtools.io/) and adds it to `$PATH`
 
 ## Usage
 
@@ -26,24 +29,23 @@ jobs:
   goreleaser:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v1
-      -
-        name: Run build-tools build command
-        uses: buildtool/build-action@v1.1
-        run: 'build --build-arg abc=123'
+      - name: setup buildtools
+        uses: buildtool/setup-buildtools-action@v0
+        with:
+          buildtools-version: 0.1.3
+      - run: build
 ```
 
 
 
-| Name         | Type    | Description                          |
-|--------------|---------|-----------------------------------------------|
-| `run`        | String  | Buildtool command, read more [here]                             |
+| Name                    | Type    | Description                               |
+|-------------------------|---------|-------------------------------------------|
+| `buildtools-version`    | String  | Buildtool version, defaults to `latest`   |
 
 
 ## License
 
 MIT. See `LICENSE` for more details.
 
-[here]: https://buildtools.io/commands

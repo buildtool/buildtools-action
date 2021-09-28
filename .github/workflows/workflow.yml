@@ -1,4 +1,4 @@
-ame: build-test
+name: build-test
 on:
   push:
     branches:

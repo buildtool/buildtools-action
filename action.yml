@@ -4,6 +4,10 @@ author: 'Buildtools'
 inputs:
   buildtools-version:
     description: 'The version to download (if necessary) and use. Supports semver spec and ranges.'
+    default: 'latest'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'package'
+  color: 'green'
