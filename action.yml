@@ -1,0 +1,9 @@
+name: 'Setup Buildtools'
+description: 'Setup a Buildtools and add it to the PATH'
+author: 'Buildtools'
+inputs:
+  buildtools-version:
+    description: 'The version to download (if necessary) and use. Supports semver spec and ranges.'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
