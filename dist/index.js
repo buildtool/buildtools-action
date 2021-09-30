@@ -1548,7 +1548,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addBinToPath = exports.run = void 0;
+exports.resolveLatestVersion = exports.semver = exports.addBinToPath = exports.run = void 0;
 const core = __importStar(__webpack_require__(470));
 const httpm = __importStar(__webpack_require__(539));
 const io = __importStar(__webpack_require__(1));
@@ -1597,6 +1597,7 @@ async function semver(version) {
         version = version.replace('beta', '-beta').replace('rc', '-rc');
     }
     version = version.replace('v', '');
+    version = version.replace('--', '-');
     let parts = version.split('-');
     let verPart = parts[0];
     let prereleasePart = parts.length > 1 ? `-${parts[1]}` : '';
@@ -1606,6 +1607,7 @@ async function semver(version) {
     }
     return `${verPart}${prereleasePart}`;
 }
+exports.semver = semver;
 async function resolveLatestVersion() {
     let _http = new httpm.HttpClient('build-tools setup');
     let res = await _http.get('https://api.github.com/repos/buildtool/build-tools/releases/latest');
@@ -1619,6 +1621,7 @@ async function resolveLatestVersion() {
     core.info(`Got buildtools version latest => ${version}`);
     return version;
 }
+exports.resolveLatestVersion = resolveLatestVersion;
 
 
 /***/ }),

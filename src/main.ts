@@ -45,13 +45,14 @@ export async function addBinToPath(): Promise<boolean> {
 // 1.13 => 1.13.0
 // 1.10beta1 => 1.10.0-beta1, 1.10rc1 => 1.10.0-rc1
 // 1.8.5beta1 => 1.8.5-beta1, 1.8.5rc1 => 1.8.5-rc1
-async function semver(version: string): Promise<string> {
+export async function semver(version: string): Promise<string> {
   if (version == '' || version == 'latest') {
     version = await resolveLatestVersion();
   } else {
     version = version.replace('beta', '-beta').replace('rc', '-rc');
   }
   version = version.replace('v', '');
+  version = version.replace('--', '-');
   let parts = version.split('-');
 
   let verPart: string = parts[0];
@@ -65,7 +66,7 @@ async function semver(version: string): Promise<string> {
   return `${verPart}${prereleasePart}`;
 }
 
-async function resolveLatestVersion(): Promise<string> {
+export async function resolveLatestVersion(): Promise<string> {
   let _http = new httpm.HttpClient('build-tools setup');
   let res: httpm.HttpClientResponse = await _http.get(
     'https://api.github.com/repos/buildtool/build-tools/releases/latest'
