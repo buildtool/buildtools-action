@@ -1,8 +1,8 @@
 ---
-name: semver
-version: 6.3.0
+name: yallist
+version: 4.0.0
 type: npm
-summary: 
+summary: Yet Another Linked List
 homepage: 
 license: isc
 licenses:
