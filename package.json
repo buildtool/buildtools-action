@@ -34,7 +34,7 @@
     "@types/node": "^16.11.1",
     "@types/semver": "^7.3.5",
     "@zeit/ncc": "^0.22.3",
-    "jest": "^27.3.0",
+    "jest": "^27.4.7",
     "jest-circus": "^27.2.5",
     "prettier": "^2.4.1",
     "ts-jest": "^27.0.7",
