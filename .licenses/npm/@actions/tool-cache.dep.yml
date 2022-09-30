@@ -1,9 +1,9 @@
 ---
 name: "@actions/tool-cache"
-version: 1.7.1
+version: 2.0.1
 type: npm
-summary: 
-homepage: 
+summary: Actions tool-cache lib
+homepage: https://github.com/actions/toolkit/tree/main/packages/tool-cache
 license: mit
 licenses:
 - sources: LICENSE.md
