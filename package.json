@@ -27,12 +27,12 @@
     "@actions/http-client": "^2.0.1",
     "@actions/io": "^1.1.2",
     "@actions/tool-cache": "^2.0.1",
-    "semver": "^7.3.5"
+    "semver": "^7.3.7"
   },
   "devDependencies": {
     "@types/jest": "^27.0.0",
     "@types/node": "^16.11.1",
-    "@types/semver": "^7.3.5",
+    "@types/semver": "^7.3.12",
     "@zeit/ncc": "^0.22.3",
     "jest": "^27.3.0",
     "jest-circus": "^27.2.5",
