@@ -5,9 +5,20 @@ inputs:
   buildtools-version:
     description: 'The version to download (if necessary) and use. Supports semver spec and ranges.'
     default: 'latest'
+  debug-log:
+    description: 'Enabled more verbose logging.'
+    default: 'false'
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: 'composite'
+  steps:
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - run: install_buildtools.sh ${{ inputs.buildtools-version }} ${{ inputs.debug-log }}
+      shell: bash
+      if: runner.os == 'Linux'
+#    - run: ./install_buildtools.sh
+#      if: runner.os == 'Windows'
+#      shell: bash
 branding:
   icon: 'package'
   color: 'green'

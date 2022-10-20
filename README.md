@@ -10,38 +10,54 @@
 ---
 
 # setup-buildtools-action
+
 This action downloads and installs [buildtools](https://buildtools.io/) and adds it to `$PATH`
+At the moment it only supports Linux runners.
 
 ## Usage
 
 Below is a simple snippet to use this action.
 
 ```yaml
-name: buildtool
+name: example
+
 
 on:
-  pull_request:
   push:
 
 jobs:
-  goreleaser:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: setup buildtools
-        uses: buildtool/setup-buildtools-action@v0
+      - uses: actions/checkout@v1
+      - uses: buildtool/setup-buildtools-action@v1
+      - run: build```
+```
+
+To specify a specific version of build-tools:
+
+```yaml
+
+name: example with version
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: buildtool/setup-buildtools-action@v1
         with:
-          buildtools-version: 0.1.3
+          buildtools-version: 0.22.3
       - run: build
 ```
 
-
-
-| Name                    | Type    | Description                               |
-|-------------------------|---------|-------------------------------------------|
-| `buildtools-version`    | String  | Buildtool version, defaults to `latest`   |
-
+| Name                 | Type    | Description                                 |
+|----------------------|---------|---------------------------------------------|
+| `buildtools-version` | String  | Buildtool version, defaults to `latest`     |
+| `debug-log  `        | String  | Enable verbose logging, defaults to `false` |
 
 ## License
 
