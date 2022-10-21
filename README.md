@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: buildtool/setup-buildtools-action@v1
-      - run: build```
+      - run: build
 ```
 
 To specify a specific version of build-tools:
