@@ -1,0 +1,34 @@
+name: Test action
+
+on:
+  push:
+
+jobs:
+  test:
+    env:
+      RUNNER_ARCH: ${{ matrix.architecture }}
+    name: Test action
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest ] #, windows-latest ]
+        architecture: [ X86, X64, ARM, ARM64 ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          buildtools-version: v0.2.22
+          debug-log: true
+      - run: build --version
+
+      - uses: ./
+        with:
+          debug-log: true
+      - run: build --version
+
+      - uses: ./
+        with:
+          buildtools-version: v0.2.22
+          debug-log: true
+      - run: build --version
+
